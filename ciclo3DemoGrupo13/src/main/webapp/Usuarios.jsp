@@ -19,7 +19,7 @@
 				<h6 class="card-subtitle mb-2 text-muted">En este panel podras
 					gestionar los datos de los usuarios del sistema</h6>
 				<div>
-					<form class="form-sign" method="get" action="Controlador">
+					<form class="form-sign" method="get" action="controlador">
 
 						<div class="form-group">
 							<input type="hidden" name="menu" value="Usuarios"> <label>Cedula:</label>
@@ -72,9 +72,9 @@
 						<td><%=usuario.getUsuario()%></td>
 						<td><%=usuario.getPassword()%></td>
 						<td><a class="btn btn-warning"
-							href="Controlador?menu=Usuarios&accion=Cargar&id= <%=usuario.getCedula_usuario()%>">Editar</a>
+							href="controlador?menu=Usuarios&accion=Cargar&id= <%=usuario.getCedula_usuario()%>">Editar</a>
 							<a class="btn btn-danger"
-							href="Controlador?menu=Usuarios&accion=Eliminar&id=<%=usuario.getCedula_usuario()%>">Eliminar</a>
+							href="controlador?menu=Usuarios&accion=Eliminar&id=<%=usuario.getCedula_usuario()%>">Eliminar</a>
 						</td>
 					</tr>
 					<%}%>

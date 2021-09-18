@@ -52,7 +52,7 @@ public class controlador extends HttpServlet {
 				try {
 					respuesta = TestJSON.postJSON(usuario);
 					if (respuesta == 200) {
-						request.getRequestDispatcher("Controlador?menu=Usuarios&accion=Listar").forward(request,
+						request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
 								response);
 					} else {
 						System.out.println("Error: " + respuesta);
