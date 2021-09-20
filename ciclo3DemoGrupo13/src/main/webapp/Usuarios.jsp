@@ -72,7 +72,7 @@
 						<td><%=usuario.getUsuario()%></td>
 						<td><%=usuario.getPassword()%></td>
 						<td><a class="btn btn-warning"
-							href="controlador?menu=Usuarios&accion=Cargar&id= <%=usuario.getCedula_usuario()%>">Editar</a>
+							href="controlador?menu=Usuarios&accion=Cargar&id=<%=usuario.getCedula_usuario()%>">Editar</a>
 							<a class="btn btn-danger"
 							href="controlador?menu=Usuarios&accion=Eliminar&id=<%=usuario.getCedula_usuario()%>">Eliminar</a>
 						</td>

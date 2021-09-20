@@ -49,16 +49,15 @@
 			<button class="btn btn-outline-light dropdown-toggle" type="button"
 				id="dropdownMenuButton1" data-bs-toggle="dropdown"
 				aria-expanded="false">${usuario.getNombre_usuario()}</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<a class="dropdown-item" href="#"><img src="imagen/login.jpg"
-					width="40" alt="40"></a> <a class="dropdown-item" href="#">${usuario.getUsuario()}</a>
-				<a class="dropdown-item" href="#">${usuario.getEmail_usuario()}</a>
-				<div class="dropdown-divider"></div>
-				<form class="dropdown-item" method="POST" action="#">
-					<button class="btn btn-danger center-block" type="submit"
-						name="accion" value="Salir">Cerrar Sesion</button>
-				</form>
-			</div>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<li><a class="dropdown-item" href="#"><img
+						src="imagen/login.jpg" width="40" alt="40"></a></li>
+				<li><a class="dropdown-item" href="#">${usuario.getUsuario()}</a></li>
+				<li><a class="dropdown-item" href="#">${usuario.getEmail_usuario()}</a></li>
+				<li><div class="dropdown-divider"></div></li>
+				<li><button class="btn btn-danger center-block" type="submit"
+					name="accion" value="Salir">Cerrar Sesion</button></li>
+			</ul>
 		</div>
 	</nav>
 	<div class="m-4" style="height: 550px;">
