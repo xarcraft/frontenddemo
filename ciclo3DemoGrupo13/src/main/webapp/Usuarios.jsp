@@ -23,23 +23,23 @@
 
 						<div class="form-group">
 							<input type="hidden" name="menu" value="Usuarios"> <label>Cedula:</label>
-							<input type="text" name="txtcedula" class="form-control">
+							<input type="text" name="txtcedula" class="form-control" value="${usuarioSeleccionado.getCedula_usuario()}">
 						</div>
 						<div class="form-group">
 							<label>Nombre:</label> <input type="text" name="txtnombre"
-								class="form-control">
+								class="form-control" value="${usuarioSeleccionado.getNombre_usuario()}">
 						</div>
 						<div class="form-group">
 							<label>Email:</label> <input type="text" name="txtemail"
-								class="form-control">
+								class="form-control" value="${usuarioSeleccionado.getEmail_usuario()}">
 						</div>
 						<div class="form-group">
 							<label>Usuario:</label> <input type="text" name="txtusuario"
-								class="form-control">
+								class="form-control" value="${usuarioSeleccionado.getUsuario()}">
 						</div>
 						<div class="form-group">
 							<label>Password:</label> <input type="password"
-								name="txtpassword" class="form-control">
+								name="txtpassword" class="form-control" value="${usuarioSeleccionado.getPassword()}">
 						</div>
 						<br>
 						<input type="submit" class="btn btn-primary" name="accion"
@@ -61,10 +61,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					ArrayList<Usuarios> lista = (ArrayList<Usuarios>) request.getAttribute("lista");
-					for (Usuarios usuario : lista) {
-					%>
+					<%ArrayList<Usuarios> lista = (ArrayList<Usuarios>)request.getAttribute("lista");
+					for (Usuarios usuario : lista) {%>
 					<tr>
 						<td><%=usuario.getCedula_usuario()%></td>
 						<td><%=usuario.getNombre_usuario()%></td>
@@ -81,5 +79,18 @@
 				</tbody>
 			</table>
 		</div>
+		<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
 </body>
 </html>

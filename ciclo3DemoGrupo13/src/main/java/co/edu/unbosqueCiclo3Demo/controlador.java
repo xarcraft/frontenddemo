@@ -61,6 +61,59 @@ public class controlador extends HttpServlet {
 					e.printStackTrace();
 				}
 
+			} else if (accion.equals("Actualizar")) {
+				Usuarios usuario = new Usuarios();
+				usuario.setCedula_usuario(Long.parseLong(request.getParameter("txtcedula")));
+				usuario.setNombre_usuario(request.getParameter("txtnombre"));
+				usuario.setEmail_usuario(request.getParameter("txtemail"));
+				usuario.setUsuario(request.getParameter("txtusuario"));
+				usuario.setPassword(request.getParameter("txtpassword"));
+
+				int respuesta = 0;
+				try {
+					respuesta = TestJSON.putJSON(usuario, usuario.getCedula_usuario());
+					PrintWriter write = response.getWriter();
+
+					if (respuesta == 200) {
+						request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
+								response);
+					} else {
+						write.println("Error: " + respuesta);
+					}
+					write.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (accion.equals("Cargar")) {
+				Long id = Long.parseLong(request.getParameter("id"));
+				try {
+					ArrayList<Usuarios> lista1 = TestJSON.getJSON();
+					for (Usuarios usuarios:lista1) {
+						if (usuarios.getCedula_usuario() == id) {
+							request.setAttribute("usuarioSeleccionado", usuarios);
+							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
+									response);
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (accion.equals("Eliminar")) {
+				Long id = Long.parseLong(request.getParameter("id"));
+				int respuesta = 0;
+				try {
+					respuesta = TestJSON.deleteJSON(id);
+					PrintWriter write = response.getWriter();
+					if (respuesta == 200) {
+						request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
+								response);
+					} else {
+						write.println("Error: " + respuesta);
+					}
+					write.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
 			break;
