@@ -28,7 +28,7 @@ public class TestJSON {
 		while (i.hasNext()) {
 			JSONObject innerObj = (JSONObject) i.next();
 			Usuarios usuario = new Usuarios();
-			usuario.setCedula_usuario(Long.parseLong(innerObj.get("cedula_usuario").toString()));
+			usuario.setCedula_usuario(innerObj.get("cedula_usuario").toString());
 			usuario.setEmail_usuario(innerObj.get("email_usuario").toString());
 			usuario.setNombre_usuario(innerObj.get("nombre_usuario").toString());
 			usuario.setPassword(innerObj.get("password").toString());
@@ -76,10 +76,12 @@ public class TestJSON {
 		http.setRequestProperty("Accept", "application/json");
 		http.setRequestProperty("Content-Type", "application/json");
 
-		String data = "{" + "\"cedula_usuario\":\"" + String.valueOf(usuario.getCedula_usuario())
-				+ "\",\"email_usuario\": \"" + usuario.getEmail_usuario() + "\",\"nombre_usuario\": \""
-				+ usuario.getNombre_usuario() + "\",\"password\":\"" + usuario.getPassword() + "\",\"usuario\":\""
-				+ usuario.getUsuario() + "\"}";
+		String data = "{" + "\"cedula_usuario\":\"" + usuario.getCedula_usuario()
+				+ "\",\"email_usuario\": \"" + usuario.getEmail_usuario() 
+				+ "\",\"nombre_usuario\": \"" + usuario.getNombre_usuario() 
+				+ "\",\"password\":\"" + usuario.getPassword() 
+				+ "\",\"usuario\":\"" + usuario.getUsuario() 
+				+ "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();
 		stream.write(out);

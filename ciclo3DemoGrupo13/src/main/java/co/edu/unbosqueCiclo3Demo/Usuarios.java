@@ -2,18 +2,21 @@ package co.edu.unbosqueCiclo3Demo;
 
 public class Usuarios {
 
-	private Long cedula_usuario;
+	private String cedula_usuario;
 	private String nombre_usuario;
 	private String email_usuario;
 	private String usuario;
 	private String password;
 	
-	public Long getCedula_usuario() {
+	
+	
+	
+	public String getCedula_usuario() {
 		return cedula_usuario;
 	}
-	public void setCedula_usuario(Long cedula_usuario) {
+	public void setCedula_usuario(String cedula_usuario) {
 		this.cedula_usuario = cedula_usuario;
-	}
+	}	
 	public String getNombre_usuario() {
 		return nombre_usuario;
 	}

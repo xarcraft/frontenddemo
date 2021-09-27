@@ -2,10 +2,7 @@ package co.edu.unbosqueCiclo3Demo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URL;
 import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +39,7 @@ public class controlador extends HttpServlet {
 				}
 			} else if (accion.equals("Agregar")) {
 				Usuarios usuario = new Usuarios();
-				usuario.setCedula_usuario(Long.parseLong(request.getParameter("txtcedula")));
+				usuario.setCedula_usuario(request.getParameter("txtcedula"));
 				usuario.setNombre_usuario(request.getParameter("txtnombre"));
 				usuario.setEmail_usuario(request.getParameter("txtemail"));
 				usuario.setUsuario(request.getParameter("txtusuario"));
@@ -63,7 +60,7 @@ public class controlador extends HttpServlet {
 
 			} else if (accion.equals("Actualizar")) {
 				Usuarios usuario = new Usuarios();
-				usuario.setCedula_usuario(Long.parseLong(request.getParameter("txtcedula")));
+				usuario.setCedula_usuario(request.getParameter("txtcedula"));
 				usuario.setNombre_usuario(request.getParameter("txtnombre"));
 				usuario.setEmail_usuario(request.getParameter("txtemail"));
 				usuario.setUsuario(request.getParameter("txtusuario"));
@@ -71,7 +68,7 @@ public class controlador extends HttpServlet {
 
 				int respuesta = 0;
 				try {
-					respuesta = TestJSON.putJSON(usuario, usuario.getCedula_usuario());
+					respuesta = TestJSON.putJSON(usuario, Long.parseLong(usuario.getCedula_usuario()));
 					PrintWriter write = response.getWriter();
 
 					if (respuesta == 200) {
@@ -85,11 +82,12 @@ public class controlador extends HttpServlet {
 					e.printStackTrace();
 				}
 			} else if (accion.equals("Cargar")) {
-				Long id = Long.parseLong(request.getParameter("id"));
+				String id = request.getParameter("id");
 				try {
 					ArrayList<Usuarios> lista1 = TestJSON.getJSON();
 					for (Usuarios usuarios:lista1) {
-						if (usuarios.getCedula_usuario() == id) {
+						System.out.println(usuarios);
+						if (usuarios.getCedula_usuario().equals(id)) {
 							request.setAttribute("usuarioSeleccionado", usuarios);
 							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
 									response);
