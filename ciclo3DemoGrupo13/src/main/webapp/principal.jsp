@@ -28,11 +28,11 @@
 					</li>
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Clientes"
+						class="btn btn-outline-light" href="controlador?menu=Clientes&accion=Listar"
 						target="myFrame">Clientes</a></li>
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Proveedores"
+						class="btn btn-outline-light" href="controlador?menu=Proveedores&accion=Listar"
 						target="myFrame">Proveedores</a></li>
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"

@@ -6,10 +6,7 @@ public class Usuarios {
 	private String nombre_usuario;
 	private String email_usuario;
 	private String usuario;
-	private String password;
-	
-	
-	
+	private String password;	
 	
 	public String getCedula_usuario() {
 		return cedula_usuario;

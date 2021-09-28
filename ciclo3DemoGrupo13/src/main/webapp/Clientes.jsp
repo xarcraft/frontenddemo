@@ -1,4 +1,4 @@
-<%@page import="co.edu.unbosqueCiclo3Demo.Usuarios"%>
+<%@page import="co.edu.unbosqueCiclo3Demo.Clientes"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,27 +19,27 @@
 				<h6 class="card-subtitle mb-2 text-muted">En este panel podras
 					gestionar los datos de los clientes del sistema</h6>
 				<div>
-					<form class="form-sign" method="get" action="Controlador">
+					<form class="form-sign" method="get" action="controlador">
 
 						<div class="form-group">
-							<input type="hidden" name="menu" value="Usuarios"> <label>Cedula:</label>
-							<input type="text" name="txtcedula" class="form-control">
+							<input type="hidden" name="menu" value="Clientes"> <label>Cedula:</label>
+							<input type="text" name="txtcedula" class="form-control" value="${usuarioSeleccionado.getCedula_cliente()}">
 						</div>
 						<div class="form-group">
 							<label>Nombre:</label> <input type="text" name="txtnombre"
-								class="form-control">
+								class="form-control" value="${usuarioSeleccionado.getNombre_cliente()}">
 						</div>
 						<div class="form-group">
 							<label>Email:</label> <input type="text" name="txtemail"
-								class="form-control">
+								class="form-control" value="${usuarioSeleccionado.getEmail_cliente()}">
 						</div>
 						<div class="form-group">
-							<label>Direccion:</label> <input type="text" name="txtusuario"
-								class="form-control">
+							<label>Direccion:</label> <input type="text" name="txtdireccion"
+								class="form-control" value="${usuarioSeleccionado.getDireccion_cliente()}">
 						</div>
 						<div class="form-group">
-							<label>Telefono:</label> <input type="password"
-								name="txtpassword" class="form-control">
+							<label>Telefono:</label> <input type="text"
+								name="txttelefono" class="form-control" value="${usuarioSeleccionado.getTelefono_cliente()}">
 						</div>
 						<br>
 						<input type="submit" class="btn btn-primary" name="accion"
@@ -61,25 +61,37 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					ArrayList<Usuarios> lista = (ArrayList<Usuarios>) request.getAttribute("lista");
-					for (Usuarios usuario : lista) {
-					%>
+					<%ArrayList<Clientes> lista = (ArrayList<Clientes>)request.getAttribute("lista");
+					for (Clientes cliente : lista) {%>
 					<tr>
-						<td><%=usuario.getCedula_usuario()%></td>
-						<td><%=usuario.getNombre_usuario()%></td>
-						<td><%=usuario.getEmail_usuario()%></td>
-						<td><%=usuario.getUsuario()%></td>
-						<td><%=usuario.getPassword()%></td>
+						<td><%=cliente.getCedula_cliente()%></td>
+						<td><%=cliente.getNombre_cliente()%></td>
+						<td><%=cliente.getEmail_cliente()%></td>
+						<td><%=cliente.getDireccion_cliente()%></td>
+						<td><%=cliente.getTelefono_cliente()%></td>
 						<td><a class="btn btn-warning"
-							href="Controlador?menu=Usuarios&accion=Cargar&id= <%=usuario.getCedula_usuario()%>">Editar</a>
+							href="controlador?menu=Clientes&accion=Cargar&id= <%=cliente.getCedula_cliente()%>">Editar</a>
 							<a class="btn btn-danger"
-							href="Controlador?menu=Usuarios&accion=Eliminar&id=<%=usuario.getCedula_usuario()%>">Eliminar</a>
+							href="controlador?menu=Clientes&accion=Eliminar&id=<%=cliente.getCedula_cliente()%>">Eliminar</a>
 						</td>
 					</tr>
 					<%}%>
 				</tbody>
 			</table>
 		</div>
+		</div>
+		<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
 </body>
 </html>
