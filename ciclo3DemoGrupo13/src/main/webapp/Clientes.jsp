@@ -70,7 +70,7 @@
 						<td><%=cliente.getDireccion_cliente()%></td>
 						<td><%=cliente.getTelefono_cliente()%></td>
 						<td><a class="btn btn-warning"
-							href="controlador?menu=Clientes&accion=Cargar&id= <%=cliente.getCedula_cliente()%>">Editar</a>
+							href="controlador?menu=Clientes&accion=Cargar&id=<%=cliente.getCedula_cliente()%>">Editar</a>
 							<a class="btn btn-danger"
 							href="controlador?menu=Clientes&accion=Eliminar&id=<%=cliente.getCedula_cliente()%>">Eliminar</a>
 						</td>
