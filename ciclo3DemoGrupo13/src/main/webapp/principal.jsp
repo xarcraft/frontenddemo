@@ -12,7 +12,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-info">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container-fluid">
 
 			<div class="collapse navbar-collapse" id="navbarNav">
@@ -36,12 +36,16 @@
 						target="myFrame">Proveedores</a></li>
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Productos"
+						class="btn btn-outline-light" href="controlador?menu=Productos&accion=Listar"
 						target="myFrame">Productos</a></li>
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
 						class="btn btn-outline-light" href="controlador?menu=Ventas"
 						target="myFrame">Ventas</a></li>
+					<li class="nav-item"><a
+						style="margin-left: 10px; border: none"
+						class="btn btn-outline-light" href="controlador?menu=Reportes"
+						target="myFrame">Reportes</a></li>
 				</ul>
 			</div>
 		</div>
