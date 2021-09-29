@@ -44,7 +44,7 @@
 						<br>
 						<input type="submit" class="btn btn-primary" name="accion"
 							value="Agregar"> <input type="submit"
-							class="btn btn-success" name="accion" value="Actualizar">
+							class="btn btn-primary" name="accion" value="Actualizar">
 					</form>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 						<td><%=proveedor.getCiudad_proveedor()%></td>
 						<td><%=proveedor.getDireccion_proveedor()%></td>
 						<td><%=proveedor.getTelefono_proveedor()%></td>
-						<td><a class="btn btn-warning"
+						<td><a class="btn btn-primary"
 							href="controlador?menu=Proveedores&accion=Cargar&id=<%=proveedor.getNitproveedor()%>">Editar</a>
 							<a class="btn btn-danger"
 							href="controlador?menu=Proveedores&accion=Eliminar&id=<%=proveedor.getNitproveedor()%>">Eliminar</a>

@@ -44,7 +44,7 @@
 						<br>
 						<input type="submit" class="btn btn-primary" name="accion"
 							value="Agregar"> <input type="submit"
-							class="btn btn-success" name="accion" value="Actualizar">
+							class="btn btn-primary" name="accion" value="Actualizar">
 					</form>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 						<td><%=usuario.getEmail_usuario()%></td>
 						<td><%=usuario.getUsuario()%></td>
 						<td><%=usuario.getPassword()%></td>
-						<td><a class="btn btn-warning"
+						<td><a class="btn btn-primary"
 							href="controlador?menu=Usuarios&accion=Cargar&id=<%=usuario.getCedula_usuario()%>">Editar</a>
 							<a class="btn btn-danger"
 							href="controlador?menu=Usuarios&accion=Eliminar&id=<%=usuario.getCedula_usuario()%>">Eliminar</a>

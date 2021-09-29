@@ -27,7 +27,7 @@ public class controlador extends HttpServlet {
 
 		switch (menu) {
 		case "Principal":
-			request.getRequestDispatcher("/principal.jsp").forward(request, response);
+			request.getRequestDispatcher("/Inicio.jsp").forward(request, response);
 			break;
 			
 		case "Usuarios":

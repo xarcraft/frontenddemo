@@ -47,7 +47,7 @@
 						</div>
 						<br>
 						<input type="submit" class="btn btn-primary" name="accion" value="Agregar"> 
-						<input type="submit" class="btn btn-success" name="accion" value="Actualizar">
+						<input type="submit" class="btn btn-primary" name="accion" value="Actualizar">
 					</form>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 						<td><%=producto.getPrecio_compra()%></td>
 						<td><%=producto.getPrecio_venta()%></td>
 						<td><%=producto.getIvacompra()%></td>
-						<td><a class="btn btn-warning"
+						<td><a class="btn btn-primary"
 							href="controlador?menu=Productos&accion=Cargar&id=<%=producto.getCodigo_producto()%>">Editar</a>
 							<a class="btn btn-danger"
 							href="controlador?menu=Productos&accion=Eliminar&id=<%=producto.getCodigo_producto()%>">Eliminar</a>

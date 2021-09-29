@@ -19,7 +19,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Principal">Home</a>
+						class="btn btn-outline-light" href="controlador?menu=Principal" target=myFrame>Home</a>
 					</li>
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
