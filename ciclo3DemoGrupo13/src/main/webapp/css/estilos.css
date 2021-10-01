@@ -6,161 +6,34 @@
     
 }
 
-
-/*-------------------------INICIO LOGIN (INDEX)----------------------------------------*/
-
-.bodyLogin{
-    
-    margin: 0;
-    padding :0;
-    background-color: #03045e;
-    background-size: cover;
-    height: 100vh;
-}
-
-
-
-.caja-login{
-    width: 320px;
-    height: 420px;
-    background-color:#023e8a;
-    color: #caf0f8;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 70px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    border-color: #caf0f8;
-    border-style: solid;
-    border-radius: 10%;
-    display: flex;
-}
-
-
-.cajadatos{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color :#caf0f8;
-    
-}
-
-
-.caja-login .imglogin{
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: -50px;
-    left: calc(32%);
-    
-}
-
-.caja-login label{
-    margin: 0;
-    padding: 5%;
-    font-weight: bold;
-    display: block;
-    
-}
-
-
-.caja-login h1{
-	margin: 0;
-	padding: 0 0 20px;
-	text-align: center;
-	font-size: 22px;
-}
-
-.caja-login input[type="text"],
-.caja-login input[type="password"] {
-    border-top: 1px solid #caf0f8;
-    border-left: 1px solid #caf0f8;
-    border-right: 1px solid #caf0f8;
-    border-bottom: 1px solid#caf0f8;
-    background: transparent;
-    outline: none;
-    height: 40px;
-    font-size: 16px;
-    color:white;
-
-}
-
-.caja-login input[type="submit"]
-{   
-    margin-top: 10%;
-    border: none;
-    outline: none;
-    height: 40px;
-    background: #caf0f8;
-    color:#03045e;
-    font-size: 18px;
-    border-radius: 10px;
-    font-weight: bold;
-
-}
-
-.caja-login a{
-    margin-top: 3%;
-    text-decoration: none;
-    font-size: 14px;
-    line-height: 20px;
-    color : #caf0f8;
-}
-
-.caja-login a:hover{
-   color : white;
-}
-
-
-.btnlogin{
-    width: 100px;
-}
-
-
-
-/*----------------------------------FIN LOGIN (INDEX)-----------------------------------*/
-
 /*-------------------------------INICIO (PRINCIPAL)-----------------------------------*/
-
-
 body{
     margin: 0;
     padding :0;
     background: #CAF0F8;
 }
 
-.circuloLogo{
-    background: #CAF0F8;
-    border-radius: 50%;
-    position: fixed;
-    top: -22px;
-    left: -30px;
-    width: 160px;
-    height: 160px;
-
-
-}
-
 .logoGeneral{
     position: fixed;
     width: 100px;
     left: 10px;
-    top:10px;
-
+    top:4px;
 }
 
 .contGeneral{
-    background:#CAF0F8;
+    background:#03045E;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 120px !important;
+    margin-bottom: 0;
+    list-style: none;
 }
 
 .nav ul{
-    margin: 0;
+    margin: 20;
     padding: 0;
     text-align: center;
     background:#03045E;
@@ -192,20 +65,19 @@ body{
     background: #0077B6;
     padding: 2.1rem 1.2rem !important;
     margin-top: -2.5em;
-    margin-bottom: -2.5em;
-    
+    margin-bottom: -2.5em;    
 }
 
 .boton_nav{
     padding: 2.1rem 1.2rem;
 }
 
-.texto_nav{
+#texto_nav{
     color: white;
 }
 
 a{
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .usuarioActivo{
@@ -221,7 +93,7 @@ a{
 
 .nombreUsuario{
     position: relative;
-    top:-11px;
+    top:2px;
     font-size: 20px;
     color: #fff;
 
@@ -230,587 +102,13 @@ a{
 .cerrarSesion{
 	position:absolute;
 	color:#fff;
-	top: 7%;
-	right:4%;
-	cursor:pointer;
-	
+	top: 70px;
+	right: 10px;
+	cursor:pointer;	
 }
 
-.cerrarSesion:hover{
-	position:absolute;
-	color:#fff;
-	top: 7%;
-	right:4%;
-	cursor:pointer;
-	text-decoration: underline;
-}
-
-@media (max-width: 1440px){
-	
-.circuloLogo{
-    background: #CAF0F8;
-    border-radius: 50%;
-    position: fixed;
-    top: -22px;
-    left: -30px;
-    width: 160px;
-    height: 160px;
-
-
-}
-
-.logoGeneral{
-    position: fixed;
-    width: 100px;
-    left: 10px;
-    top:10px;
-
-}
-
-.contGeneral{
-    background:#CAF0F8;
-}
-
-.nav ul{
-	width: auto;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background:#03045E;
-}
-
-.nav ul li{
-    display: inline-block;
-}
-
-.nav ul li a{
-
-    display: block;
-    padding: 0rem 1rem;
-    font-weight: bold;
-}  
-
-.nav a:hover {
-    
-    transition: all 0.4s linear;
-    background: #0077B6;
-    color: #03045E;  
-    padding: 2.1rem 1rem;
-    margin-top: -2.5em;
-    margin-bottom: -2.5em;
-
-}    
-
-.select {
-    background: #0077B6;
-    padding: 2.1rem 1rem !important;
-    margin-top: -2.5em;
-    margin-bottom: -2.5em;
-    
-}
-
-.boton_nav{
-    padding: 2.1rem 1.2rem;
-}
-
-.texto_nav{
-    color: white;
-}
-
-a{
-    text-decoration: none;
-}
-
-.usuarioActivo{
-    text-align: center;
-    position: absolute;
-    width: 200px;
-    height: 40px;
-    background: #0077B6;
-    border-radius: 20px;
-    top: 3%;
-    left: 84.5%;
-}
-
-.nombreUsuario{
-    position: relative;
-    top:-11px;
-    font-size: 20px;
-    color: #fff;
-
-}
-
-.cerrarSesion{
-	position:absolute;
-	color:#fff;
-	top: 7%;
-	right:5%;
-	cursor:pointer;
-	
-}
-
-.cerrarSesion:hover{
-	position:absolute;
-	color:#fff;
-	top: 7%;
-	right:5%;
-	cursor:pointer;
-	text-decoration: underline;
-}
-}
-
-
-@media (max-width: 1280px){
-	
-.circuloLogo{
-    background: #CAF0F8;
-    border-radius: 50%;
-    position: fixed;
-    top: -22px;
-    left: -30px;
-    width: 160px;
-    height: 160px;
-
-
-}
-
-.logoGeneral{
-    position: fixed;
-    width: 100px;
-    left: 10px;
-    top:10px;
-
-}
-
-.contGeneral{
-    background:#CAF0F8;
-}
-
-.nav ul{
-	width: auto;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background:#03045E;
-}
-
-.nav ul li{
-    display: inline-block;
-}
-
-.nav ul li a{
-
-    display: block;
-    padding: 0rem 0.8rem;
-    font-weight: bold;
-}  
-
-.nav a:hover {
-    
-    transition: all 0.4s linear;
-    background: #0077B6;
-    color: #03045E;  
-    padding: 2.1rem 0.8rem;
-    margin-top: -2.5em;
-    margin-bottom: -2.5em;
-
-}    
-
-.select {
-    background: #0077B6;
-    padding: 2.1rem 0.8rem !important;
-    margin-top: -2.5em;
-    margin-bottom: -2.5em;
-    
-}
-
-.boton_nav{
-    padding: 2.1rem 0.8rem;
-}
-
-.texto_nav{
-    color: white;
-}
-
-a{
-    text-decoration: none;
-}
-
-.usuarioActivo{
-    text-align: center;
-    position: absolute;
-    width: 200px;
-    height: 40px;
-    background: #0077B6;
-    border-radius: 20px;
-    top: 3%;
-    left: 82%;
-}
-
-.nombreUsuario{
-    position: relative;
-    top:-11px;
-    font-size: 20px;
-    color: #fff;
-
-}
-
-.cerrarSesion{
-	position:absolute;
-	color:#fff;
-	top: 7%;
-	right:6.5%;
-	cursor:pointer;
-	
-}
-
-.cerrarSesion:hover{
-	position:absolute;
-	color:#fff;
-	top: 7%;
-	right:6.5%;
-	cursor:pointer;
-	text-decoration: underline;
-}
-}
-
-
-@media (max-width: 1024px){
-	
-.circuloLogo{
-    background: #CAF0F8;
-    border-radius: 50%;
-    position: fixed;
-    top: -22px;
-    left: -30px;
-    width: 160px;
-    height: 160px;
-
-
-}
-
-.logoGeneral{
-    position: fixed;
-    width: 100px;
-    left: 10px;
-    top:10px;
-
-}
-
-.contGeneral{
-    background:#CAF0F8;
-}
-
-.nav ul{
-	width: auto;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background:#03045E;
-}
-
-.nav ul li{
-    display: inline-block;
-}
-
-.nav ul li a{
-
-    display: block;
-    padding: 0rem 0.5rem;
-    font-weight: bold;
-}  
-
-.nav a:hover {
-    
-    transition: all 0.4s linear;
-    background: #0077B6;
-    color: #03045E;  
-    padding: 2.1rem 0.5rem;
-    margin-top: -2.5em;
-    margin-bottom: -2.5em;
-
-}    
-
-.select {
-    background: #0077B6;
-    padding: 2.1rem 0.5rem !important;
-    margin-top: -2.5em;
-    margin-bottom: -2.5em;
-    
-}
-
-.boton_nav{
-    padding: 2.1rem 0.5rem;
-}
-
-.texto_nav{
-    color: white;
-}
-
-a{
-    text-decoration: none;
-}
-
-.usuarioActivo{
-    text-align: center;
-    position: absolute;
-    width: 170px;
-    height: 35px;
-    background: #0077B6;
-    border-radius: 20px;
-    top: 3%;
-    left: 82%;
-}
-
-.nombreUsuario{
-    position: relative;
-    top:-14px;
-    font-size: 20px;
-    color: #fff;
-
-}
-
-.cerrarSesion{
-	position:absolute;
-	color:#fff;
-	top: 6.5%;
-	right:5%;
-	cursor:pointer;
-	
-}
-
-.cerrarSesion:hover{
-	position:absolute;
-	color:#fff;
-	top: 6.5%;
-	right:5%;
-	cursor:pointer;
-	text-decoration: underline;
-}
-}
-/*----------------------------------FIN INICIO-----------------------------------*/
-
-
-/*-------------------------INICIO USUARIOS----------------------------------------*/
-html{
-    height: 100%;
-    background-color: #CAF0F8;
-}
-
-body{
-    margin: 0;
-    padding: 0;
-
-}
-
-.FormUsers{
-    margin: 50px auto;
-    width: 400px;
-    padding: 30px;
-
-}
-
-.FormUsers h1{
-    color: #023e8a;
-    text-align: center;
-}
-
-.FormUsers h2{
-    color: #023e8a;
-    text-align: center;
-}
-
-.FormUsers .FormElement label{
-    color: #023e8a;
-}
-
-
-.FormUsers .FormElement input{
-    width: 100%;
-    padding: 10px 0;
-    
-}
-
-
-.BtnForm{
-    font-size: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background-color: #03045e;
-    color: #caf0f8;
-    width: 80px;
-    padding: 5px;
-    border: none;
-
-}
-
-.BtnForm:hover{
-    color:#ffffff;
-    background-color: #0077b6;
-    border: none;
-    cursor: pointer;
-}
-
-
-.contenedorppal{
-    display: flex;
-}
-
-.contenedorbtn{
-    width: 420px;
-    justify-content: center;
-    text-align: center;
-    
-}
-
-.FormElement{
-    width: 180px;
-    margin: 15px;
-
-}
-
-.imguser{
-    width: 100px;
-    height: 100px;
-    
-    
-}
-
-html{
-    height: 100%;
-}
-
-body{
-    margin: 0;
-    padding: 0;
-
-}
-
-th{
-	color: #caf0f8;
-	background-color: #03045e;
-}
-
-tr:nth-child(even){
-	background-color: #ade8f4;
-	
-}
-
-.FormUsers{
-	
-    margin: 50px auto;
-    width: 50%;
-    padding: 30px;
-    background: black;
-
-}
-
-h1{
-	color: #023e8a;
-    font-size: 28px;
-    text-align: center;
-    
-}
-
-
-.contenedorppalusuarios{
-	
-	display: flex;
-	padding: 30px;
-	width: 100%;
-	color: #023e8a;
-	margin: 70px auto;
-	
-}
-
-
-.contenedorbtn{
-    width:300px;
-    margin-top: 20px;
-    margin-left: 28px;
-    
-    
-}
-
-
-/*.contenedortabla{
-	display: flex;
-	padding: 30px;
-	width: 100%;
-	color: #023e8a;
-	background: turquoise;
-	
-}*/
-
-table{
-	width: 70%;
-}
-
-table, hd, td{
-	border: 1px solid #00b4d8;
-	border-collapse: collapse;
-	padding: 5px;
-}
-
-caption{
-	color: #03045e;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 40px;
-}
-
-
-
-.BtnForm{
-    font-size: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background-color: #03045e;
-    color: #caf0f8;
-    width: 80px;
-    padding: 5px;
-    border: none;
-
-}
-
-.BtnForm:hover{
-    color:#ffffff;
-    background-color: #0077b6;
-    border: none;
-    cursor: pointer;
-}
-
-
-
-.FormElement{
-    width: 260px;
-    margin: 15px;
-    align-items: center;
-
-}
-
-.FormElement label{
-	width: 200px;
-	padding: 5px;
-	text-align: center;
-}
-
-.FormElement input{
-	width: 200px;
-	align-items: center;
-	
-}
-
-/*----------------------------------FIN USUARIOS-----------------------------------*/
-
-
-/*---------------------------------INICIO FOOTER -------------------------------*/
-
-.footerGral{
-	
-	
-}
 
+/*footer*/
 .footerInicio{
 	justify-content:space-around;
 	width: 100%;
@@ -853,7 +151,3 @@ caption{
 .contacto li{
 	list-style:none;
 }
-
-
-
-

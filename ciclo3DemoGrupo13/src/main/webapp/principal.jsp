@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Pagina Principal</title>
+<link href="css/estilos.css" rel='stylesheet' />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -12,59 +13,26 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<div class="container-fluid">
-
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Principal" target=myFrame>Home</a>
-					</li>
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="controlador?menu=Usuarios&accion=Listar" target="myFrame">Usuarios</a>
-					</li>
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Clientes&accion=Listar"
-						target="myFrame">Clientes</a></li>
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Proveedores&accion=Listar"
-						target="myFrame">Proveedores</a></li>
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Productos&accion=Listar"
-						target="myFrame">Productos</a></li>
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Ventas"
-						target="myFrame">Ventas</a></li>
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="controlador?menu=Reportes"
-						target="myFrame">Reportes</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="dropdown">
-			<button class="btn btn-outline-light dropdown-toggle" type="button"
-				id="dropdownMenuButton1" data-bs-toggle="dropdown"
-				aria-expanded="false">${usuario.getNombre_usuario()}</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="#"><img
-						src="imagen/login.jpg" width="40" alt="40"></a></li>
-				<li><a class="dropdown-item" href="#">${usuario.getUsuario()}</a></li>
-				<li><a class="dropdown-item" href="#">${usuario.getEmail_usuario()}</a></li>
-				<li><div class="dropdown-divider"></div></li>
-				<li><button class="btn btn-danger center-block" type="submit"
-					name="accion" value="Salir">Cerrar Sesion</button></li>
+	<header>
+	<div class="contGeneral">
+		<img class="logoGeneral" src="img/logo.png" alt="FiveWare" />
+		<div class="usuarioActivo" ><p class="nombreUsuario">${usuario.getNombre_usuario()}</p></div>
+		<div class="cerrarSesion"><a style="color: #fff;" href="index.jsp">Cerrar Sesión</a></div>
+		<nav class="nav">	
+			<ul>
+				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Principal" target="myFrame">Inicio</a></li>
+				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Usuarios&accion=Listar" target="myFrame">Usuarios</a></li>
+				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a></li>
+				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Proveedores&accion=Listar" target="myFrame">Proveedores</a></li>
+				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Productos&accion=Listar" target="myFrame">Productos</a></li>
+				<li class="boton_nav" ><a id="texto_nav" href="Ventas.jsp" target="myFrame">Ventas</a></li>
+				<li class="boton_nav" ><a id="texto_nav" href="#" target="myFrame">Reportes</a></li>
 			</ul>
-		</div>
-	</nav>
-	<div class="m-4" style="height: 550px;">
+					
+		</nav>
+	</div>
+	</header>
+	<div class="m-4" style="height: 700px;">
 		<iframe style="height: 100%; width: 100%; border: none" name="myFrame"></iframe>
 	</div>
 

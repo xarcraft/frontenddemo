@@ -31,14 +31,12 @@ public class demoServlet extends HttpServlet {
 					request.getRequestDispatcher("principal.jsp").forward(request, response);
 					respuesta = 1;
 				}
-
 			}
-
 			if (respuesta == 0) {
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
-				System.out.println("No se encontraron datos");
+				String message = "Credenciales incorrectas o campos vacios <br> por favor verifique o póngase en contacto con un administrador";
+				request.setAttribute("message", message);
+				request.getRequestDispatcher("/index.jsp").forward(request, response);				
 			}
-
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

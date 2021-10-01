@@ -10,6 +10,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -59,7 +63,7 @@ public class TestJSON {
 		http.disconnect();
 		return lista;
 	}
-
+	
 	public static int postJSON(Usuarios usuario) throws IOException {
 
 		url = new URL(sitio + "usuarios/guardar");

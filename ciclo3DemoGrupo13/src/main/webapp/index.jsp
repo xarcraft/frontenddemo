@@ -20,6 +20,7 @@
 </head>
 <!--Coded with love by Mutiullah Samim-->
 <body>
+	<p style="color: #fff; text-align: center; font-size: 20px; margin-top:16px;">${message}</p>
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
@@ -35,7 +36,7 @@
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
 							<input type="text" name="txtusuario"
-								class="form-control input_user" value=""
+								class="form-control input_user"
 								placeholder="nombre de usuario">
 						</div>
 						<div class="input-group mb-2">
@@ -43,7 +44,7 @@
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
 							<input type="password" name="txtpassword"
-								class="form-control input_pass" value="" placeholder="password">
+								class="form-control input_pass" placeholder="password">
 						</div>
 						<br>
 						<div class="d-flex justify-content-center mt-3 login_container">
@@ -61,5 +62,6 @@
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>

@@ -87,7 +87,6 @@ public class controlador extends HttpServlet {
 				try {
 					ArrayList<Usuarios> lista1 = TestJSON.getJSON();
 					for (Usuarios usuarios:lista1) {
-						System.out.println(usuarios);
 						if (usuarios.getCedula_usuario().equals(id)) {
 							request.setAttribute("usuarioSeleccionado", usuarios);
 							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
@@ -110,6 +109,29 @@ public class controlador extends HttpServlet {
 						write.println("Error: " + respuesta);
 					}
 					write.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if (accion.equals("Buscar")) {
+				String id = request.getParameter("txtcedula");
+				try {
+					ArrayList<Usuarios> lista1 = TestJSON.getJSON();
+					for (Usuarios usuarios:lista1) {
+						System.out.println(usuarios);						
+						if (id.equals("")) {
+							String message = "Por favor digite un número de cédula para buscar";
+							request.setAttribute("message", message);
+							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request, response);						
+						}else if (usuarios.getCedula_usuario().equals(id)) {
+							request.setAttribute("usuarioSeleccionado", usuarios);
+							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
+									response);
+						}/*else {
+							String message = "Número de cédula no encontrado";
+							request.setAttribute("message", message);
+							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request, response);
+						}*/
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

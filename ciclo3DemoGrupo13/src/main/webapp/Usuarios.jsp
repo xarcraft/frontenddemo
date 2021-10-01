@@ -22,7 +22,7 @@
 					<form class="form-sign" method="get" action="controlador">
 
 						<div class="form-group">
-							<input type="hidden" name="menu" value="Usuarios"> <label>Cedula:</label>
+							<input type="hidden" name="menu" value="Usuarios"> <label>(*)Cedula:</label>
 							<input type="text" name="txtcedula" class="form-control" value="${usuarioSeleccionado.getCedula_usuario()}">
 						</div>
 						<div class="form-group">
@@ -41,10 +41,11 @@
 							<label>Password:</label> <input type="password"
 								name="txtpassword" class="form-control" value="${usuarioSeleccionado.getPassword()}">
 						</div>
+						<div style="color: gray;">(*) Campo requerido para hacer busquedas</div>
 						<br>
-						<input type="submit" class="btn btn-primary" name="accion"
-							value="Agregar"> <input type="submit"
-							class="btn btn-primary" name="accion" value="Actualizar">
+							<input type="submit" class="btn btn-primary" name="accion" value="Agregar"> 
+							<input type="submit" class="btn btn-primary" name="accion" value="Actualizar">
+							<input type="submit" class="btn btn-primary" name="accion" value="Buscar">
 					</form>
 				</div>
 			</div>
@@ -61,6 +62,7 @@
 					</tr>
 				</thead>
 				<tbody>
+				<p style="color: #000; text-align: center; font-size: 20px; margin-top:16px;">${message}</p>
 					<%ArrayList<Usuarios> lista = (ArrayList<Usuarios>)request.getAttribute("lista");
 					for (Usuarios usuario : lista) {%>
 					<tr>
