@@ -25,7 +25,7 @@
 				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Clientes&accion=Listar" target="myFrame">Clientes</a></li>
 				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Proveedores&accion=Listar" target="myFrame">Proveedores</a></li>
 				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Productos&accion=Listar" target="myFrame">Productos</a></li>
-				<li class="boton_nav" ><a id="texto_nav" href="Ventas.jsp" target="myFrame">Ventas</a></li>
+				<li class="boton_nav" ><a id="texto_nav" href="controlador?menu=Ventas&accion=default&UsuarioActivo=${usuario.getCedula_usuario()}" target="myFrame">Ventas</a></li>
 				<li class="boton_nav" ><a id="texto_nav" href="#" target="myFrame">Reportes</a></li>
 			</ul>
 					

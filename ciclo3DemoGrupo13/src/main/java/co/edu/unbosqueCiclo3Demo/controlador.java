@@ -1,5 +1,6 @@
 package co.edu.unbosqueCiclo3Demo;
 
+import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -11,8 +12,43 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/controlador")
 public class controlador extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
+	
+	//variables generales
+	long subtotal=0, totalapagar=0;
+	long codProducto=0, precio=0, iva=0, subtotaliva=0, acusubtotal=0;
+	long numfac=0;
+	int cantidad=0, item=0;
+	String descripcion, cedulaCliente;
+	List<Detalle_ventas> listaVentas = new ArrayList<>();
+	Detalle_ventas detalle_venta = new Detalle_ventas();
+	
+	//metodos locales
+	public void buscarCliente(String id, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		try {
+			ArrayList<Clientes> listac=TestJSONClientes.getJSON();
+			for(Clientes clientes: listac) {
+				if(clientes.getCedula_cliente().equals(id)) {
+					request.setAttribute("clienteSeleccionado", clientes);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void buscarProducto(String id, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		try {
+			ArrayList<Productos> listap=TestJSONProductos.getJSON();
+			for(Productos productos: listap) {
+				if(productos.getCodigo_producto().equals(id)) {
+					request.setAttribute("productoSeleccionado", productos);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public controlador() {
 		super();
@@ -20,10 +56,13 @@ public class controlador extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		String menu = request.getParameter("menu");
 		String accion = request.getParameter("accion");
+		
+		//Cedula del usuario activo
+		String cedula_usuario_activo = request.getParameter("UsuarioActivo");
+		/*usuarios.setCedula_usuario(cedula_usuario_activo);
+		request.setAttribute("usuarioSeleccionado", usuarios);*/
 
 		switch (menu) {
 		case "Principal":
@@ -402,6 +441,18 @@ public class controlador extends HttpServlet {
 			request.getRequestDispatcher("/Productos.jsp").forward(request, response);
 			break;
 		case "Ventas":
+			//request.setAttribute("usuarioSeleccionado", usuarios);
+			
+			if(accion.equals("BuscarCliente")) {
+				String id = request.getParameter("cedulacliente");
+				this.buscarCliente(id, request, response);
+			}else if(accion.equals("BuscarProducto")) {
+				String id = request.getParameter("codigoproducto");
+				this.buscarProducto(id, request, response);
+				
+				String idc = request.getParameter("cedulacliente");
+				this.buscarCliente(idc, request, response);
+			}
 			request.getRequestDispatcher("/Ventas.jsp").forward(request, response);
 			break;
 		}
