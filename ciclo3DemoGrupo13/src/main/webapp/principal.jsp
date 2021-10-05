@@ -33,7 +33,7 @@
 	</div>
 	</header>
 	<div class="m-4" style="height: 700px;">
-		<iframe style="height: 100%; width: 100%; border: none" name="myFrame"></iframe>
+		<iframe style="height: 100%; width: 100%; border: none" name="myFrame" src="Inicio.jsp"></iframe>
 	</div>
 
 	<!-- Optional JavaScript -->
