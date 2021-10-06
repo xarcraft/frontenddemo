@@ -23,27 +23,27 @@
 
 						<div class="form-group">
 							<input type="hidden" name="menu" value="Productos"> <label>Codigo:</label>
-							<input type="text" name="txtcodigo" class="form-control" value="${usuarioSeleccionado.getCodigo_producto()}">
+							<input type="text" name="txtcodigo" class="form-control" value="${productoSeleccionado.getCodigo_producto()}">
 						</div>
 						<div class="form-group">
 							<label>Nombre:</label> <input type="text" name="txtnombre"
-								class="form-control" value="${usuarioSeleccionado.getNombre_producto()}">
+								class="form-control" value="${productoSeleccionado.getNombre_producto()}">
 						</div>
 						<div class="form-group">
 							<label>Nit:</label> <input type="text" name="txtnit"
-								class="form-control" value="${usuarioSeleccionado.getNitproveedor()}">
+								class="form-control" value="${productoSeleccionado.getNitproveedor()}">
 						</div>
 						<div class="form-group">
 							<label>Precio compra:</label> <input type="text" name="txtcompra"
-								class="form-control" value="${usuarioSeleccionado.getPrecio_compra()}">
+								class="form-control" value="${productoSeleccionado.getPrecio_compra()}">
 						</div>
 						<div class="form-group">
 							<label>Precio venta:</label> <input type="text"
-								name="txtventa" class="form-control" value="${usuarioSeleccionado.getPrecio_venta()}">
+								name="txtventa" class="form-control" value="${productoSeleccionado.getPrecio_venta()}">
 						</div>
 						<div class="form-group">
 							<label>IVA:</label> <input type="text"
-								name="txtiva" class="form-control" value="${usuarioSeleccionado.getIvacompra()}">
+								name="txtiva" class="form-control" value="${productoSeleccionado.getIvacompra()}">
 						</div>
 						<br>
 						<input type="submit" class="btn btn-primary" name="accion" value="Agregar"> 

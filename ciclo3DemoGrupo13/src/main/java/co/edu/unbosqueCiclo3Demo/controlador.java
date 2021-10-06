@@ -21,6 +21,7 @@ public class controlador extends HttpServlet {
 	int cantidad=0, item=0;
 	String descripcion, cedulaCliente;
 	List<Detalle_ventas> listaVentas = new ArrayList<>();
+	Usuarios usuarios = new Usuarios();
 	Detalle_ventas detalle_venta = new Detalle_ventas();
 	
 	//metodos locales
@@ -61,8 +62,8 @@ public class controlador extends HttpServlet {
 		
 		//Cedula del usuario activo
 		String cedula_usuario_activo = request.getParameter("UsuarioActivo");
-		/*usuarios.setCedula_usuario(cedula_usuario_activo);
-		request.setAttribute("usuarioSeleccionado", usuarios);*/
+		usuarios.setCedula_usuario(cedula_usuario_activo);
+		request.setAttribute("usuarioSeleccionado", usuarios);
 
 		switch (menu) {
 		case "Principal":
@@ -237,7 +238,7 @@ public class controlador extends HttpServlet {
 					for (Clientes clientes:lista1) {
 						System.out.println(clientes);
 						if (clientes.getCedula_cliente().equals(id)) {
-							request.setAttribute("usuarioSeleccionado", clientes);
+							request.setAttribute("clienteSeleccionado", clientes);
 							request.getRequestDispatcher("controlador?menu=Clientes&accion=Listar").forward(request,
 									response);
 						}
@@ -324,7 +325,7 @@ public class controlador extends HttpServlet {
 					for (Proveedores proveedores:lista1) {
 						System.out.println(proveedores);
 						if (proveedores.getNitproveedor().equals(id)) {
-							request.setAttribute("usuarioSeleccionado", proveedores);
+							request.setAttribute("proveedorSeleccionado", proveedores);
 							request.getRequestDispatcher("controlador?menu=Proveedores&accion=Listar").forward(request,
 									response);
 						}
@@ -413,7 +414,7 @@ public class controlador extends HttpServlet {
 					for (Productos productos:lista1) {
 						System.out.println(productos);
 						if (productos.getCodigo_producto().equals(id)) {
-							request.setAttribute("usuarioSeleccionado", productos);
+							request.setAttribute("productoSeleccionado", productos);
 							request.getRequestDispatcher("controlador?menu=Productos&accion=Listar").forward(request,
 									response);
 						}
@@ -441,15 +442,14 @@ public class controlador extends HttpServlet {
 			request.getRequestDispatcher("/Productos.jsp").forward(request, response);
 			break;
 		case "Ventas":
-			//request.setAttribute("usuarioSeleccionado", usuarios);
+			request.setAttribute("usuarioSeleccionado", usuarios);
 			
 			if(accion.equals("BuscarCliente")) {
 				String id = request.getParameter("cedulacliente");
 				this.buscarCliente(id, request, response);
 			}else if(accion.equals("BuscarProducto")) {
 				String id = request.getParameter("codigoproducto");
-				this.buscarProducto(id, request, response);
-				
+				this.buscarProducto(id, request, response);				
 				String idc = request.getParameter("cedulacliente");
 				this.buscarCliente(idc, request, response);
 			}
