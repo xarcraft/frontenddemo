@@ -5,9 +5,9 @@ public class Ventas {
 	private Long codigo_venta;
 	private Long cedula_cliente;
 	private Long cedula_usuario;
-	private Long ivaventa;
-	private Long total_venta;
-	private Long valor_venta;
+	private Double ivaventa;
+	private Double total_venta;
+	private Double valor_venta;
 	
 	public Long getCodigo_venta() {
 		return codigo_venta;
@@ -27,23 +27,22 @@ public class Ventas {
 	public void setCedula_usuario(Long cedula_usuario) {
 		this.cedula_usuario = cedula_usuario;
 	}
-	public Long getIvaventa() {
+	public Double getIvaventa() {
 		return ivaventa;
 	}
-	public void setIvaventa(Long ivaventa) {
+	public void setIvaventa(Double ivaventa) {
 		this.ivaventa = ivaventa;
 	}
-	public Long getTotal_venta() {
+	public Double getTotal_venta() {
 		return total_venta;
 	}
-	public void setTotal_venta(Long total_venta) {
+	public void setTotal_venta(Double total_venta) {
 		this.total_venta = total_venta;
 	}
-	public Long getValor_venta() {
+	public Double getValor_venta() {
 		return valor_venta;
 	}
-	public void setValor_venta(Long valor_venta) {
+	public void setValor_venta(Double valor_venta) {
 		this.valor_venta = valor_venta;
 	}
-	
 }

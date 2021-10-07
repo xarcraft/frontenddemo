@@ -35,7 +35,7 @@
 							<div class="col-sm-6">
 								<input type="text" name="nombrecliente" class="form-control"
 									placeholder="Nombre Cliente"
-									value="${clienteSeleccionado.getNombre_cliente() }">
+									value="${clienteSeleccionado.getNombre_cliente() }" readonly="readonly">
 							</div>
 						</div>
 
@@ -49,27 +49,31 @@
 						<div class="form-group d-flex">
 							<div class="col-sm-6 d-flex">
 								<input type="number" name="codigoproducto" class="form-control"
-									placeholder="Código Producto" value="${productoSeleccionado.getCodigo_producto() }"> <input
-									type="submit" name="accion" value="BuscarProducto"
+									placeholder="Código Producto"
+									value="${productoSeleccionado.getCodigo_producto() }">
+								<input type="submit" name="accion" value="BuscarProducto"
 									class="btn btn-outline-info">
 							</div>
 							<div class="col-sm-6 d-flex">
 								<input type="text" name="producto" class="form-control"
-									placeholder="Nombre Producto" value="${productoSeleccionado.getNombre_producto() }">
+									placeholder="Nombre Producto"
+									value="${productoSeleccionado.getNombre_producto() }" readonly="readonly">
 							</div>
 						</div>
 						<div class="form-group d-flex">
 							<div class="col-sm-6 d-flex">
-								<input type="text" name="precioproducto" class="form-control"
-									placeholder="$ 0000.00" value="${productoSeleccionado.getPrecio_venta() }">
+								<input type="text" name="precio" class="form-control"
+									placeholder="$ 0000.00"
+									value="${productoSeleccionado.getPrecio_venta() }" readonly="readonly">
 							</div>
 							<div class="col-sm-3 d-flex">
-								<input type="number" name="cantidadproducto"
-									class="form-control" placeholder="cantidad" value="">
+								<input type="number" name="cantidad"
+									class="form-control" placeholder="cantidad" value="1">
 							</div>
 							<div class="col-sm-3 d-flex">
 								<input type="text" name="ivaproducto" class="form-control"
-									placeholder="Valor IVA" value="${productoSeleccionado.getIvacompra() }">
+									placeholder="Valor IVA"
+									value="${productoSeleccionado.getIvacompra() }" readonly="readonly">
 							</div>
 						</div>
 						<div class="form-group d-flex">
@@ -86,7 +90,7 @@
 					<div class="form-grow row">
 						<label class="col-sm-3 col-form-label">Número de Factura</label> <input
 							class="form-control col-md-4" type="text" name="numerofactura"
-							value="">
+							value="${numerofactura}" readonly="readonly">
 					</div>
 				</div>
 				<div class="card-body">
@@ -95,7 +99,7 @@
 							<tr>
 								<th>#</th>
 								<th>Codigo</th>
-								<th>Prodcuto</th>
+								<th>Producto</th>
 								<th>Precio</th>
 								<th>Cantidad</th>
 								<th>Iva</th>
@@ -103,15 +107,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+							<c:forEach var="lista" items="${listaventas }">
+								<tr>
+									<td>${lista.getCodigo_detalle_venta()}</td>
+									<td>${lista.getCodigo_producto()}</td>
+									<td>${lista.getDescripcion_producto()}</td>
+									<td>${lista.getPrecio_producto()}</td>
+									<td>${lista.getCantidad_producto()}</td>
+									<td>${lista.getValoriva()}</td>
+									<td>${lista.getValor_venta()}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -122,18 +128,18 @@
 					</div>
 					<div class="col-md-4">
 						<input type="text" name="txtsubtotal" class="form-control"
-							value="" placeholder="$ 00.000.00" disabled> <input
-							type="text" name="txttotaliva" class="form-control" value=""
-							placeholder="$ 00.000.00" disabled> <input type="text"
-							name="txttotalapagar" class="form-control" value=""
-							placeholder="$ 00.000.00" disabled>
+							value="${totalsubtotal }" placeholder="$ 00.000.00" disabled>
+						<input type="text" name="txttotaliva" class="form-control"
+							value="${totaliva }" placeholder="$ 00.000.00" disabled>
+						<input type="text" name="txttotalapagar" class="form-control"
+							value="${totalapagar }" placeholder="$ 00.000.00" disabled>
 					</div>
 				</div>
 			</div>
 			<div class="card-footer d-flex">
 				<div class="col-md-8">
 					<a class="btn btn-success" onclick="print()"
-						href="controlador?menu=Ventas&accion=GenerarVenta">Generar
+						href="controlador?menu=Ventas&accion=GenerarVenta&cedulacliente=${clienteSeleccionado.getCedula_cliente()}&UsuarioActivo=${usuarioSeleccionado.getCedula_usuario()}&numerofactura=${numerofactura}">Generar
 						Venta</a> <a class="btn btn-danger"
 						href="controlador?menu=Ventas&accion=NuevaVenta">Nueva Venta</a>
 				</div>

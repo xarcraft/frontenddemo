@@ -12,7 +12,7 @@ public class TestJSONVentas {
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
 	
-	public static int postJSON(Ventas venta) throws IOException {
+	public static int postJSON(Ventas ventas) throws IOException {
 
 		url = new URL(sitio + "ventas/guardar");
 		HttpURLConnection http;
@@ -29,13 +29,14 @@ public class TestJSONVentas {
 		http.setRequestProperty("Content-Type", "application/json");
 
 		String data = "{" 
-				+ "\"codigo_venta\":\"" + venta.getCodigo_venta()
-				+ "\",\"cedula_cliente\": \"" + venta.getCedula_cliente() 
-				+ "\",\"cedula_usuario\": \"" + venta.getCedula_usuario() 
-				+ "\",\"ivaventa\":\"" + venta.getIvaventa() 
-				+ "\",\"total_venta\":\"" + venta.getTotal_venta()
-				+ "\",\"valor_venta\":\"" + venta.getValor_venta()
+				+ "\"codigo_venta\":\""+ String.valueOf(ventas.getCodigo_venta())
+				+"\",\"cedula_cliente\": \""+String.valueOf(ventas.getCedula_cliente())
+				+"\",\"cedula_usuario\": \""+String.valueOf(ventas.getCedula_usuario())
+				+"\",\"ivaventa\":\""+String.valueOf(ventas.getIvaventa())
+				+"\",\"total_venta\":\""+String.valueOf(ventas.getTotal_venta())
+				+"\",\"valor_venta\":\""+String.valueOf(ventas.getValor_venta())
 				+ "\"}";
+		
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();
 		stream.write(out);

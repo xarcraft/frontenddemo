@@ -6,9 +6,11 @@ public class Detalle_ventas {
 	private Integer cantidad_producto;
 	private Long codigo_producto;
 	private Long codigo_venta;
-	private Long valor_total;
-	private Long valor_venta;
-	private Long valoriva;
+	private Double valor_total;
+	private Double valor_venta;
+	private Double valoriva;
+	private String descripcion_producto;
+	private Double precio_producto;
 	
 	public Integer getCodigo_detalle_venta() {
 		return codigo_detalle_venta;
@@ -34,22 +36,34 @@ public class Detalle_ventas {
 	public void setCodigo_venta(Long codigo_venta) {
 		this.codigo_venta = codigo_venta;
 	}
-	public Long getValor_total() {
+	public Double getValor_total() {
 		return valor_total;
 	}
-	public void setValor_total(Long valor_total) {
+	public void setValor_total(Double valor_total) {
 		this.valor_total = valor_total;
 	}
-	public Long getValor_venta() {
+	public Double getValor_venta() {
 		return valor_venta;
 	}
-	public void setValor_venta(Long valor_venta) {
+	public void setValor_venta(Double valor_venta) {
 		this.valor_venta = valor_venta;
 	}
-	public Long getValoriva() {
+	public Double getValoriva() {
 		return valoriva;
 	}
-	public void setValoriva(Long valoriva) {
+	public void setValoriva(Double valoriva) {
 		this.valoriva = valoriva;
+	}
+	public String getDescripcion_producto() {
+		return descripcion_producto;
+	}
+	public void setDescripcion_producto(String descripcion_producto) {
+		this.descripcion_producto = descripcion_producto;
+	}
+	public Double getPrecio_producto() {
+		return precio_producto;
+	}
+	public void setPrecio_producto(Double precio_producto) {
+		this.precio_producto = precio_producto;
 	}
 }

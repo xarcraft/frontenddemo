@@ -7,7 +7,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-public class TestJSONDestalleVenta {
+public class TestJSONDetalleVenta {
 
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
@@ -29,13 +29,13 @@ public class TestJSONDestalleVenta {
 		http.setRequestProperty("Content-Type", "application/json");
 
 		String data = "{" 
-				+ "\"codigo_detalle_venta\":\"" + detalle_venta.getCodigo_detalle_venta()
-				+ "\",\"cantidad_producto\": \"" + detalle_venta.getCantidad_producto() 
-				+ "\",\"codigo_producto\": \"" + detalle_venta.getCodigo_producto() 
-				+ "\",\"codigo_venta\":\"" + detalle_venta.getCodigo_venta() 
-				+ "\",\"valor_total\":\"" + detalle_venta.getValor_total()
-				+ "\",\"valor_venta\":\"" + detalle_venta.getValor_venta()
-				+ "\",\"valoriva\":\"" + detalle_venta.getValoriva()
+				+ "\"codigo_detalle_venta\":\""+ String.valueOf(detalle_venta.getCodigo_detalle_venta())
+				+"\",\"cantidad_producto\": \""+String.valueOf(detalle_venta.getCantidad_producto())
+				+"\",\"codigo_producto\": \""+String.valueOf(detalle_venta.getCodigo_producto())
+				+"\",\"codigo_venta\":\""+String.valueOf(detalle_venta.getCodigo_venta())
+				+"\",\"valor_total\":\""+String.valueOf(detalle_venta.getValor_total())
+				+"\",\"valor_venta\":\""+String.valueOf(detalle_venta.getValor_venta())
+				+"\",\"valoriva\":\""+String.valueOf(detalle_venta.getValoriva())
 				+ "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();
