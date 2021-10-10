@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/controlador")
 public class controlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private TestJSONVentas ventabase;
 
 	// variables generales
-	double subtotal, totalapagar, subtotaliva, acusubtotal, subtotailiva = 0;
+	double subtotal=0, totalapagar, subtotaliva, acusubtotal, subtotailiva = 0;
 	long codigo_producto, codProducto, numfac = 0;
 	double valor_iva, precio, iva = 0;
 	int cantidad, item = 0;
@@ -63,6 +65,35 @@ public class controlador extends HttpServlet {
 			numfac = Integer.parseInt(numFact) + 1;
 		}
 		request.setAttribute("numerofactura", numfac);
+	}
+	
+	public void grabarDetalleVentas (Long numFact, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		for(int i=0; i<listaVentas.size();i++) {
+			detalle_venta=new Detalle_ventas();
+			detalle_venta.setCodigo_detalle_venta(i+1);
+			detalle_venta.setCodigo_venta(numFact);
+			detalle_venta.setCodigo_producto(listaVentas.get(i).getCodigo_producto());
+			detalle_venta.setCantidad_producto(listaVentas.get(i).getCantidad_producto());
+			detalle_venta.setValor_venta(listaVentas.get(i).getValor_venta());
+			detalle_venta.setValor_total(listaVentas.get(i).getValor_total());
+			detalle_venta.setValoriva(listaVentas.get(i).getValoriva());
+			
+			int respuesta=0;
+			try {
+				respuesta=TestJSONDetalleVenta.postJSON(detalle_venta);
+				PrintWriter write= response.getWriter();
+				if(respuesta==200) {
+					System.out.println("Registro grabado en detalle ventas: "+1);
+					request.getRequestDispatcher("controlador?menu=Ventas&accion=default").forward(request,
+							response);
+				}else {
+					write.println("Error detalles ventas: "+ respuesta);
+				}
+				write.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public controlador() {
@@ -165,32 +196,7 @@ public class controlador extends HttpServlet {
 					write.close();
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
-			} else if (accion.equals("Buscar")) {
-				String id = request.getParameter("txtcedula");
-				try {
-					ArrayList<Usuarios> lista1 = TestJSON.getJSON();
-					for (Usuarios usuarios : lista1) {
-						System.out.println(usuarios);
-						if (id.equals("")) {
-							String message = "Por favor digite un número de cédula para buscar";
-							request.setAttribute("message", message);
-							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
-									response);
-						} else if (usuarios.getCedula_usuario().equals(id)) {
-							request.setAttribute("usuarioSeleccionado", usuarios);
-							request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").forward(request,
-									response);
-						} /*
-							 * else { String message = "Número de cédula no encontrado";
-							 * request.setAttribute("message", message);
-							 * request.getRequestDispatcher("controlador?menu=Usuarios&accion=Listar").
-							 * forward(request, response); }
-							 */
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				}			
 			}
 			request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
 			break;
@@ -476,6 +482,9 @@ public class controlador extends HttpServlet {
 				detalle_venta = new Detalle_ventas();
 				item++;
 				totalapagar = 0;
+				acusubtotal=0;
+				subtotaliva=0;
+				
 				codProducto = Integer.parseInt(request.getParameter("codigoproducto"));
 				descripcion = request.getParameter("producto");
 				cantidad = Integer.parseInt(request.getParameter("cantidad"));
@@ -525,8 +534,8 @@ public class controlador extends HttpServlet {
 
 					if (respuesta == 200) {
 						System.out.println("Grabacion exitosa " + respuesta);
-						request.getRequestDispatcher("controlador?menu=Ventas&accion=default&UsuarioActivo=${usuario.getCedula_usuario()]").forward(request,
-								response);
+						
+						this.grabarDetalleVentas(ventas.getCodigo_venta(), request, response);
 					} else {
 						write.println("error ventas: " + respuesta);
 					}
@@ -534,11 +543,27 @@ public class controlador extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				listaVentas.clear();
+				item=0;
+				totalapagar=0;
+				acusubtotal=0;
+				subtotailiva=0;
 			} else {
-				String factura = null;
-				this.mostrarNumFactura(factura, request, response);
+				try {
+					String factura = String.valueOf(ventabase.obtenerConsecutivo());
+					request.setAttribute("numerofactura", factura);
+				} catch (Exception e) {
+					System.out.println("esto dio error" + e);
+					e.printStackTrace();
+				}
+						//request.getParameter("numerofactura");
+				//this.mostrarNumFactura(factura, request, response);
 			}
 			request.getRequestDispatcher("/Ventas.jsp").forward(request, response);
+			break;
+		case "Reportes":			
+			
+			request.getRequestDispatcher("/Reportes.jsp").forward(request, response);
 			break;
 		}
 	}
