@@ -2,22 +2,31 @@ package co.edu.unbosqueCiclo3Demo;
 
 import java.util.List;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.tagext.TryCatchFinally;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 @WebServlet("/controlador")
 public class controlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private TestJSONVentas ventabase;
+	private static URL url;
+	private static String sitio = "http://localhost:5000/";
 
 	// variables generales
-	double subtotal=0, totalapagar, subtotaliva, acusubtotal, subtotailiva = 0;
+	double subtotal=0, totalapagar, subtotaliva, acusubtotal;
 	long codigo_producto, codProducto, numfac = 0;
 	double valor_iva, precio, iva = 0;
 	int cantidad, item = 0;
@@ -83,7 +92,7 @@ public class controlador extends HttpServlet {
 				respuesta=TestJSONDetalleVenta.postJSON(detalle_venta);
 				PrintWriter write= response.getWriter();
 				if(respuesta==200) {
-					System.out.println("Registro grabado en detalle ventas: "+1);
+					System.out.println("Registro grabado en detalle ventas: "+i);
 					request.getRequestDispatcher("controlador?menu=Ventas&accion=default").forward(request,
 							response);
 				}else {
@@ -95,7 +104,7 @@ public class controlador extends HttpServlet {
 			}
 		}
 	}
-
+	
 	public controlador() {
 		super();
 	}
@@ -463,10 +472,11 @@ public class controlador extends HttpServlet {
 			}
 			request.getRequestDispatcher("/Productos.jsp").forward(request, response);
 			break;
+			
 		case "Ventas":
 			request.setAttribute("usuarioSeleccionado", usuarios);
 			request.setAttribute("numerofactura", numfac);
-
+			
 			if (accion.equals("BuscarCliente")) {
 				String id = request.getParameter("cedulacliente");
 				this.buscarCliente(id, request, response);
@@ -533,8 +543,7 @@ public class controlador extends HttpServlet {
 					PrintWriter write = response.getWriter();
 
 					if (respuesta == 200) {
-						System.out.println("Grabacion exitosa " + respuesta);
-						
+						System.out.println("Grabacion exitosa " + respuesta);						
 						this.grabarDetalleVentas(ventas.getCodigo_venta(), request, response);
 					} else {
 						write.println("error ventas: " + respuesta);
@@ -547,22 +556,44 @@ public class controlador extends HttpServlet {
 				item=0;
 				totalapagar=0;
 				acusubtotal=0;
-				subtotailiva=0;
+				subtotaliva=0;
 			} else {
-				try {
-					String factura = String.valueOf(ventabase.obtenerConsecutivo());
-					request.setAttribute("numerofactura", factura);
-				} catch (Exception e) {
-					System.out.println("esto dio error" + e);
-					e.printStackTrace();
-				}
-						//request.getParameter("numerofactura");
-				//this.mostrarNumFactura(factura, request, response);
+				String factura = request.getParameter("numerofactura");
+				this.mostrarNumFactura(factura, request, response);
 			}
+			
 			request.getRequestDispatcher("/Ventas.jsp").forward(request, response);
 			break;
 		case "Reportes":			
-			
+			int opcion=0;
+			if(accion.equals("ReporteUsuarios")) {
+				try {
+					ArrayList<Usuarios> lista = TestJSON.getJSON();
+					opcion=1;
+					request.setAttribute("listaUsuarios", lista);
+					request.setAttribute("opcion", opcion);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(accion.equals("ReporteClientes")) {
+				try {
+					ArrayList<Clientes> lista = TestJSONClientes.getJSON();
+					opcion=2;
+					request.setAttribute("listaClientes", lista);
+					request.setAttribute("opcion", opcion);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(accion.equals("ReporteVentas")) {
+				try {
+					ArrayList<Ventas> lista = TestJSONVentas.getJSON();
+					opcion=3;
+					request.setAttribute("listaVentas1", lista);
+					request.setAttribute("opcion", opcion);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			request.getRequestDispatcher("/Reportes.jsp").forward(request, response);
 			break;
 		}

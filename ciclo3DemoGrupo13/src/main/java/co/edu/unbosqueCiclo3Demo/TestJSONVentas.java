@@ -8,7 +8,9 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -57,47 +59,44 @@ public class TestJSONVentas {
 		return respuesta;
 	}
 	
-	private String obtenerJson(InputStream respuesta) throws Exception {
+	public static ArrayList<Ventas> parsingVentas(String json) throws ParseException {
+		JSONParser jsonParser = new JSONParser();
+		ArrayList<Ventas> lista = new ArrayList<Ventas>();
+		JSONArray ventas = (JSONArray) jsonParser.parse(json);
+		Iterator i = ventas.iterator();
+		while (i.hasNext()) {
+			JSONObject innerObj = (JSONObject) i.next();
+			Ventas venta = new Ventas();
+			venta.setCodigo_venta(Long.parseLong(innerObj.get("codigo_venta").toString()));
+			venta.setCedula_cliente(Long.parseLong(innerObj.get("cedula_cliente").toString()));
+			venta.setCedula_usuario(Long.parseLong(innerObj.get("cedula_usuario").toString()));
+			venta.setIvaventa(Double.parseDouble(innerObj.get("ivaventa").toString()));
+			venta.setTotal_venta(Double.parseDouble(innerObj.get("total_venta").toString()));
+			venta.setValor_venta(Double.parseDouble(innerObj.get("valor_venta").toString()));
+			lista.add(venta);
+		}
+		return lista;
+	}
+
+	public static ArrayList<Ventas> getJSON() throws IOException, ParseException {
+
+		url = new URL(sitio + "ventas/listar");
+		HttpURLConnection http = (HttpURLConnection) url.openConnection();
+
+		http.setRequestMethod("GET");
+		http.setRequestProperty("Accept", "application/json");
+
+		InputStream respuesta = http.getInputStream();
 		byte[] inp = respuesta.readAllBytes();
 		String json = "";
+
 		for (int i = 0; i < inp.length; i++) {
 			json += (char) inp[i];
 		}
-		System.out.println("json::>" + json);
-		return json;
-	}
-	
-	public Long parsingConsecutivo(String json) throws ParseException {
-		Long cod = null;
-		JSONParser jsonParser = new JSONParser();
-		JSONObject innerObj = (JSONObject) jsonParser.parse(json);
-		
-		if(innerObj != null && !innerObj.isEmpty()) {					
-			cod = Long.parseLong(innerObj.get("id").toString());
-		}
-		return cod;
-	}
-	
-	public Long obtenerConsecutivo() throws Exception {
-		Long cod = null;
-		try {
-			url = new URL(sitio + "ventas/buscarSigCod");
-			HttpURLConnection http;
-			http = (HttpURLConnection) url.openConnection();
-			http.setRequestMethod("GET");
-			http.setRequestProperty("Accept", "application/json");
-			http.setRequestProperty("Content-Type", "application/json");
-			
-			String json =obtenerJson(http.getInputStream());
-			if(json!=null && !json.isEmpty()) {
-				cod = parsingConsecutivo(json);
-			}		
 
-		} catch (Exception e) {
-			System.err.println("No hay resultados para esa consulta::>" + e.getMessage());
-			throw new Exception("No hay resultados para esa consulta");
-		}
-		return cod;
+		ArrayList<Ventas> lista = new ArrayList<Ventas>();
+		lista = parsingVentas(json);
+		http.disconnect();
+		return lista;
 	}
-	
 }
